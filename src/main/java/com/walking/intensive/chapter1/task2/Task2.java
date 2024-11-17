@@ -38,25 +38,24 @@ public class Task2 {
     }
 
     static boolean checkNumber(int number) {
-        boolean check = number > 0;
-        return check;
+        return number > 0;
     }
 
     static String getFlatLocation(int floorAmount, int entranceAmount, int flatNumber) {
         //        Место для вашего кода
         final int LIMITFLATS = 4; // кол-во квартир на этаже
-        int flatAmount = 0; // номер квартиры
+        int flatAmount; // номер квартиры
 
         if (checkNumber(floorAmount) & (checkNumber(entranceAmount) & checkNumber(flatNumber))) {
             flatAmount = floorAmount * entranceAmount * LIMITFLATS; //общее кол-во квартир
         } else {
-            return String.format("Некорректные входные данные");
+            return "Некорректные входные данные";
         }
 
         if (flatNumber <= flatAmount) {
             int flatAmountInEntrance = floorAmount * LIMITFLATS; //кол-во квартир в подъезде
 
-            int entranceNumber = 0; // номер подъезда
+            int entranceNumber; // номер подъезда
             if (flatNumber > flatAmountInEntrance) {
                 entranceNumber = flatNumber / flatAmountInEntrance;
                 if (entranceNumber % flatAmountInEntrance > 0) {
@@ -75,14 +74,14 @@ public class Task2 {
             //номер квартиры на этаже
             int flatNumberOnFloor = flatNumber - (flatAmountInEntrance * (entranceNumber - 1)) - LIMITFLATS * (floorNumber - 1);
 
-            String elevatorSide = "";
+            String elevatorSide;
             if (flatNumberOnFloor > 2) {
                 elevatorSide = "справа";
             } else {
                 elevatorSide = "слева";
             }
 
-            String side = "";
+            String side;
             if (flatNumberOnFloor % 2 == 0) {
                 side = "вправо";
             } else {
@@ -90,7 +89,7 @@ public class Task2 {
             }
             return String.format("%d кв - %d подъезд, %d этаж, %s от лифта, %s", flatNumber, entranceNumber, floorNumber, elevatorSide, side);
         } else {
-            return String.format("Такой квартиры не существует");
+            return "Такой квартиры не существует";
         }
     }
 }
