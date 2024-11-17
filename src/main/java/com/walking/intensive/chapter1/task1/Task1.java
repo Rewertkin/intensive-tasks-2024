@@ -36,6 +36,7 @@ public class Task1 {
                 calcAge %= 10;
             }
         }
+
         if (calcAge == 1) {
             wordAge = "год";
         } else if (calcAge > 1 & calcAge < 5) {
