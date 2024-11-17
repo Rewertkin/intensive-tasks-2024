@@ -44,6 +44,7 @@ public class Task1 {
         } else {
             wordAge = "лет";
         }
+
         return String.format("Вам %d %s", inAge, wordAge);
     }
 }
