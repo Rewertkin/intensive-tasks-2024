@@ -34,11 +34,63 @@ package com.walking.intensive.chapter1.task2;
 public class Task2 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(getFlatLocation(10, 1, 40));
+    }
+
+    static boolean checkNumber(int number) {
+        boolean check = number > 0;
+        return check;
     }
 
     static String getFlatLocation(int floorAmount, int entranceAmount, int flatNumber) {
         //        Место для вашего кода
+        final int LIMITFLATS = 4; // кол-во квартир на этаже
+        int flatAmount = 0; // номер квартиры
 
-        return null; // Заглушка. При реализации - удалить
+        if (checkNumber(floorAmount) & (checkNumber(entranceAmount) & checkNumber(flatNumber))) {
+            flatAmount = floorAmount * entranceAmount * LIMITFLATS; //общее кол-во квартир
+        } else {
+            return String.format("Некорректные входные данные");
+        }
+
+        if (flatNumber <= flatAmount) {
+            int flatAmountInEntrance = floorAmount * LIMITFLATS; //кол-во квартир в подъезде
+
+            int entranceNumber = 0; // номер подъезда
+            if (flatNumber > flatAmountInEntrance) {
+                entranceNumber = flatNumber / flatAmountInEntrance;
+                if (entranceNumber % flatAmountInEntrance > 0) {
+                    entranceNumber += 1;
+                }
+            } else {
+                entranceNumber = 1;
+            }
+
+            //номер этажа
+            int floorNumber = (flatNumber - (flatAmountInEntrance * (entranceNumber - 1))) / LIMITFLATS;
+            if (flatNumber % LIMITFLATS > 0) {
+                floorNumber += 1;
+            }
+
+            //номер квартиры на этаже
+            int flatNumberOnFloor = flatNumber - (flatAmountInEntrance * (entranceNumber - 1)) - LIMITFLATS * (floorNumber - 1);
+
+            String elevatorSide = "";
+            if (flatNumberOnFloor > 2) {
+                elevatorSide = "справа";
+            } else {
+                elevatorSide = "слева";
+            }
+
+            String side = "";
+            if (flatNumberOnFloor % 2 == 0) {
+                side = "вправо";
+            } else {
+                side = "влево";
+            }
+            return String.format("%d кв - %d подъезд, %d этаж, %s от лифта, %s", flatNumber, entranceNumber, floorNumber, elevatorSide, side);
+        } else {
+            return String.format("Такой квартиры не существует");
+        }
     }
 }
