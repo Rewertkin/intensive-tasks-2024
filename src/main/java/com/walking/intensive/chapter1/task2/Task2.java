@@ -35,9 +35,7 @@ public class Task2 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
         System.out.println(getFlatLocation(10, 1, 40));
-    }
-
-    static boolean checkNumber(int number) {
+    }    static boolean checkNumber(int number) {
         return number > 0;
     }
 
