@@ -20,9 +20,8 @@ public class Task1 {
     }
 
     static String getAgeString(int inAge) {
-        int calcAge = inAge;
-        String wordAge;
 
+        int calcAge = inAge;
         while (calcAge > 10) {
             if (calcAge >= 11 & calcAge <= 14) {
                 break;
@@ -33,6 +32,7 @@ public class Task1 {
             }
         }
 
+        String wordAge;
         if (calcAge == 1) {
             wordAge = "год";
         } else if (calcAge > 1 & calcAge < 5) {
