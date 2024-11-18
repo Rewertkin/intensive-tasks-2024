@@ -34,13 +34,11 @@ public class Task1 {
 
         String wordAge;
         if (calcAge == 1) {
-            wordAge = "год";
+            return String.format("Вам %d год", inAge);
         } else if (calcAge > 1 & calcAge < 5) {
-            wordAge = "года";
+            return String.format("Вам %d года", inAge);
         } else {
-            wordAge = "лет";
+            return String.format("Вам %d лет", inAge);
         }
-
-        return String.format("Вам %d %s", inAge, wordAge);
     }
 }
