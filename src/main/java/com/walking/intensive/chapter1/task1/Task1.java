@@ -32,7 +32,6 @@ public class Task1 {
             }
         }
 
-        String wordAge;
         if (calcAge == 1) {
             return String.format("Вам %d год", inAge);
         } else if (calcAge > 1 & calcAge < 5) {
