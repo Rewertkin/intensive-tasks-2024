@@ -1,5 +1,7 @@
 package com.walking.intensive.chapter1.task4;
 
+import java.util.Arrays;
+
 /**
  * Дано уравнение:
  *
@@ -28,9 +30,9 @@ package com.walking.intensive.chapter1.task4;
 public class Task4 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        double a = 9;
-        double b = 5;
-        double c = 30;
+        double a = 0;
+        double b = 1;
+        double c = 0;
 
         System.out.println(solveEquation(a, b, c));
 
@@ -40,31 +42,30 @@ public class Task4 {
 
         if (a == 0 & b == 0 & c != 0) {
             return "Некорректные входные данные";
-        } else if (a == 0 & b == 0 & c == 0) {
+        }
+
+        if (a == 0 & b == 0 & c == 0) {
             return "Бесконечное множество решений";
         }
 
-        if (a != 0) {
-            double d = Math.pow(b, 2) - (4 * a * c);
-            if (d == 0) {
-                return String.format("Количество решений: 1. Корень: %.0f", -b / 2 * a);
-            } else if (d > 0) {
+        double discriminant = 0;
+        if (a != 0){
+            discriminant = Math.pow(b, 2) - (4 * a * c);
+        }
 
-                double x1 = (-b - Math.sqrt(d)) / 2 * a;
-                double x2 = (-b + Math.sqrt(d)) / 2 * a;
-                if (x2 > x1) {
-                    double i = x1;
-                    x1 = x2;
-                    x2 = i;
-                }
-                return String.format("Количество решений: 2. Корни: %.0f;%.0f", x1, x2);
-            } else {
-                return "Количество решений: 0.";
-            }
+        if (a != 0 & discriminant == 0) {
+            return String.format("Количество решений: 1. Корень: %.0f", -b / 2 * a);
+        } else if (a != 0 & discriminant > 0) {
+            double arrayEquation[] = new double[2];
+            arrayEquation[0] = (-b - Math.sqrt(discriminant)) / 2 * a;
+            arrayEquation[1] = (-b + Math.sqrt(discriminant)) / 2 * a;
+            Arrays.sort(arrayEquation); //корни должны располагаться по возрастанию
+            return String.format("Количество решений: 2. Корни: %.0f;%.0f", arrayEquation[0], arrayEquation[1]);
+        } else if (a != 0 & discriminant < 0) {
+            return "Количество решений: 0.";
+        } else if (a == 0 & ( c == 0 || b == 0)) {
+            return "Количество решений: 1. Корень: 0";
         } else {
-            if (c == 0) {
-                return "Количество решений: 1. Корень: 0";
-            }
             return String.format("Количество решений: 1. Корень: %.0f", -c / b);
         }
     }
