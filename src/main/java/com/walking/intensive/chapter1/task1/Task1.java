@@ -34,10 +34,12 @@ public class Task1 {
 
         if (calcAge == 1) {
             return String.format("Вам %d год", inAge);
-        } else if (calcAge > 1 & calcAge < 5) {
-            return String.format("Вам %d года", inAge);
-        } else {
-            return String.format("Вам %d лет", inAge);
         }
+
+        if (calcAge > 1 & calcAge < 5) {
+            return String.format("Вам %d года", inAge);
+        }
+
+        return String.format("Вам %d лет", inAge);
     }
 }
