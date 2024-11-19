@@ -55,18 +55,27 @@ public class Task4 {
 
         if (a != 0 & discriminant == 0) {
             return String.format("Количество решений: 1. Корень: %.0f", -b / 2 * a);
-        } else if (a != 0 & discriminant > 0) {
-            double arrayEquation[] = new double[2];
-            arrayEquation[0] = (-b - Math.sqrt(discriminant)) / 2 * a;
-            arrayEquation[1] = (-b + Math.sqrt(discriminant)) / 2 * a;
-            Arrays.sort(arrayEquation); //корни должны располагаться по возрастанию
-            return String.format("Количество решений: 2. Корни: %.0f;%.0f", arrayEquation[0], arrayEquation[1]);
-        } else if (a != 0 & discriminant < 0) {
-            return "Количество решений: 0.";
-        } else if (a == 0 & ( c == 0 || b == 0)) {
-            return "Количество решений: 1. Корень: 0";
-        } else {
-            return String.format("Количество решений: 1. Корень: %.0f", -c / b);
         }
+        if (a != 0 & discriminant > 0) {
+            double x1 = (-b - Math.sqrt(discriminant)) / 2 * a;
+            double x2 = (-b + Math.sqrt(discriminant)) / 2 * a;
+            if (x2 > x1){
+                double temp = x1;
+                x1 = x2;
+                x2 = temp;
+            }
+
+            return String.format("Количество решений: 2. Корни: %.0f;%.0f", x1, x2);
+        }
+
+        if (a != 0 & discriminant < 0) {
+            return "Количество решений: 0.";
+        }
+
+        if (a == 0 & ( c == 0 || b == 0)) {
+            return "Количество решений: 1. Корень: 0";
+        }
+
+            return String.format("Количество решений: 1. Корень: %.0f", -c / b);
     }
 }
