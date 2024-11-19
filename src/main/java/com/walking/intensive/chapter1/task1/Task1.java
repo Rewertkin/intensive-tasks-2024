@@ -23,7 +23,7 @@ public class Task1 {
 
         int calcAge = inAge;
         while (calcAge > 10) {
-            if (calcAge >= 11 & calcAge <= 14) {
+            if (calcAge <= 14) {
                 break;
             } else if (calcAge > 100) {
                 calcAge %= 100;
@@ -33,13 +33,13 @@ public class Task1 {
         }
 
         if (calcAge == 1) {
-            return String.format("Вам %d год", inAge);
+            return "Вам " + inAge + " год";
         }
 
         if (calcAge > 1 & calcAge < 5) {
-            return String.format("Вам %d года", inAge);
+            return "Вам " + inAge + " года";
         }
 
-        return String.format("Вам %d лет", inAge);
+        return "Вам " + inAge + " лет";
     }
 }
