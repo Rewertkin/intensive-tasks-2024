@@ -163,7 +163,7 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getInscribedCircleRadius(double a, double b, double c) {
-        //        Место для вашего кода
+
         if(checkFailSides(a, b, c)) {
             return -1;
         }
