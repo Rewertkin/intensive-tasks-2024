@@ -28,13 +28,13 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getAreaByHeron(double a, double b, double c) {
-        //        Место для вашего кода
-        if(checkFailSides(a, b, c)){
+
+        if (checkFailSides(a, b, c)) {
             return -1;
-        }else{
-            return  (double) 1 / 4 * Math.sqrt((a + b - c) * (a - b + c) * (-a + b + c) * (a + b + c));
         }
+        return (double) 1 / 4 * Math.sqrt((a + b - c) * (a - b + c) * (-a + b + c) * (a + b + c));
     }
+
 
     /**
      * Реализуйте метод, который будет возвращать высоты треугольника по возрастанию.
@@ -45,23 +45,23 @@ public class Task5 {
      */
     static double[] getHeights(double a, double b, double c) {
 
-        double[] arrayOfHeights = new double[0];
+        double[] heightsArray = new double[0];
 
-        if (checkFailSides(a,b,c)){
-            return arrayOfHeights;
+        if (checkFailSides(a, b, c)) {
+            return heightsArray;
         }
 
-        double s = getAreaByHeron(a, b, c);
+        double area = getAreaByHeron(a, b, c);
 
-        arrayOfHeights = new double[3];
+        heightsArray = new double[3];
         double[] arraySides = {a, b, c};
 
-        for (int i = 0; i < 3; i++){
-            arrayOfHeights[i] = 2 * s / arraySides[i];
+        for (int i = 0; i < 3; i++) {
+            heightsArray[i] = 2 * area / arraySides[i];
         }
 
-        Arrays.sort(arrayOfHeights);
-        return arrayOfHeights;
+        Arrays.sort(heightsArray);
+        return heightsArray;
     }
 
     /**
@@ -73,24 +73,24 @@ public class Task5 {
      */
     static double[] getMedians(double a, double b, double c) {
 
-        double[] arrayOfMedians = new double[0];
+        double[] mediansArray = new double[0];
 
-        if (checkFailSides(a, b, c)){
-            return arrayOfMedians;
+        if (checkFailSides(a, b, c)) {
+            return mediansArray;
         }
-        arrayOfMedians = new double[3];
+        mediansArray = new double[3];
 
-        for (int i = 0;i < 3; ++i){
-            arrayOfMedians[i] = switch (i) {
+        for (int i = 0; i < 3; ++i) {
+            mediansArray[i] = switch (i) {
                 case 0 -> Math.sqrt(2 * Math.pow(b, 2) + 2 * Math.pow(c, 2) - Math.pow(a, 2)) * 1 / 2;
                 case 1 -> Math.sqrt(2 * Math.pow(a, 2) + 2 * Math.pow(c, 2) - Math.pow(b, 2)) * 1 / 2;
                 case 2 -> Math.sqrt(2 * Math.pow(a, 2) + 2 * Math.pow(b, 2) - Math.pow(c, 2)) * 1 / 2;
                 default -> 0;
             };
         }
-        Arrays.sort(arrayOfMedians);
+        Arrays.sort(mediansArray);
 
-        return arrayOfMedians;
+        return mediansArray;
     }
 
     /**
@@ -101,25 +101,25 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать пустой массив нулевой длины.
      */
     static double[] getBisectors(double a, double b, double c) {
-        double[] arrayOfBisectors = new double[0];
+        double[] bisectorsArray = new double[0];
 
-        if (checkFailSides(a, b, c)){
-            return arrayOfBisectors;
+        if (checkFailSides(a, b, c)) {
+            return bisectorsArray;
         }
 
-        arrayOfBisectors = new double[3];
+        bisectorsArray = new double[3];
 
-        for (int i = 0;i < 3; ++i){
-            arrayOfBisectors[i] = switch (i) {
-                case 0 -> (Math.sqrt(a* b * (a + b + c) * (a + b - c))) / (a + b);
-                case 1 -> (Math.sqrt(a* c * (a + b + c) * (a + c - b))) / (a + c);
-                case 2 -> (Math.sqrt(c* b * (a + b + c) * (c + b - a))) / (c + b);
+        for (int i = 0; i < 3; ++i) {
+            bisectorsArray[i] = switch (i) {
+                case 0 -> (Math.sqrt(a * b * (a + b + c) * (a + b - c))) / (a + b);
+                case 1 -> (Math.sqrt(a * c * (a + b + c) * (a + c - b))) / (a + c);
+                case 2 -> (Math.sqrt(c * b * (a + b + c) * (c + b - a))) / (c + b);
                 default -> 0;
             };
         }
 
-        Arrays.sort(arrayOfBisectors);
-        return arrayOfBisectors;
+        Arrays.sort(bisectorsArray);
+        return bisectorsArray;
     }
 
     /**
@@ -131,19 +131,19 @@ public class Task5 {
      */
     static double[] getAngles(double a, double b, double c) {
         //        Место для вашего кода
-        double[] arrayOfAngles= new double[0];
+        double[] anglesArray = new double[0];
 
-        if (checkFailSides(a, b, c)){
-            return arrayOfAngles;
+        if (checkFailSides(a, b, c)) {
+            return anglesArray;
         }
 
 
-        arrayOfAngles = new double[3];
+        anglesArray = new double[3];
 
         double area = getAreaByHeron(a, b, c);
 
-        for (int i = 0;i < 3; ++i){
-            arrayOfAngles[i] = switch (i) {
+        for (int i = 0; i < 3; ++i) {
+            anglesArray[i] = switch (i) {
                 case 0 -> Math.toDegrees(Math.asin((2 * area) / (a * b)));
                 case 1 -> Math.toDegrees(Math.asin((2 * area) / (b * c)));
                 case 2 -> Math.toDegrees(Math.asin((2 * area) / (a * c)));
@@ -151,8 +151,8 @@ public class Task5 {
             };
         }
 
-        Arrays.sort(arrayOfAngles);
-        return arrayOfAngles;
+        Arrays.sort(anglesArray);
+        return anglesArray;
     }
 
     /**
@@ -164,10 +164,10 @@ public class Task5 {
      */
     static double getInscribedCircleRadius(double a, double b, double c) {
 
-        if(checkFailSides(a, b, c)) {
+        if (checkFailSides(a, b, c)) {
             return -1;
         }
-        return getAreaByHeron(a, b, c) / ((a+ b + c) / 2);
+        return getAreaByHeron(a, b, c) / ((a + b + c) / 2);
     }
 
     /**
@@ -178,10 +178,11 @@ public class Task5 {
      * <p>Если входные данные некорректны - метод должен возвращать -1.
      */
     static double getCircumradius(double a, double b, double c) {
-        if(checkFailSides(a, b, c)) {
+
+        if (checkFailSides(a, b, c)) {
             return -1;
         }
-        return (a * b * c) / (4 * getAreaByHeron(a, b, c));
+        return a * b * c / (4 * getAreaByHeron(a, b, c));
     }
 
     /**
@@ -200,20 +201,20 @@ public class Task5 {
      */
     static double getAreaAdvanced(double a, double b, double c) {
 
-        if(checkFailSides(a, b, c)) {
+        if (checkFailSides(a, b, c)) {
             return -1;
         }
         //найдем косинус
         double cos = (a * a + b * b - c * c) / (2 * a * b);
 
         //найдем синус
-        double sin = Math.sqrt(1 - cos * cos );
+        double sin = Math.sqrt(1 - cos * cos);
 
         //найдем площадь
         return a * b * sin / 2;
     }
 
     static boolean checkFailSides(double a, double b, double c) {
-        return !(b + c > a & a + c > b & a + b > c & a > 0 & b > 0 & c > 0);
+        return b + c < a || a + c < b || a + b < c || a < 0 || b < 0 || c < 0;
     }
 }
