@@ -27,9 +27,9 @@ package com.walking.intensive.chapter1.task4;
 public class Task4 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        double a = 0;
-        double b = 1;
-        double c = 0;
+        double a = -1;
+        double b = 3;
+        double c = 4;
 
         System.out.println(solveEquation(a, b, c));
 
@@ -62,7 +62,7 @@ public class Task4 {
         if (discriminant > 0) {
             double x1 = (-b - Math.sqrt(discriminant)) / 2 * a;
             double x2 = (-b + Math.sqrt(discriminant)) / 2 * a;
-            if (x2 > x1) {
+            if (x2 < x1) {
                 double temp = x1;
                 x1 = x2;
                 x2 = temp;
