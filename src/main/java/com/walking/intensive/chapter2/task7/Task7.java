@@ -28,10 +28,33 @@ package com.walking.intensive.chapter2.task7;
 public class Task7 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
+        // System.out.println(getFriendlyPair(79));
     }
 
     static int getFriendlyPair(int n) {
-        // Ваш код
+        if (n < 1 || n > 1000000) {
+            return -1;
+        }
+        for (int i = n; i > 0; i--) {
+            int sumDivisorsI = getSumDivisor(i);
+            if (sumDivisorsI > i && sumDivisorsI < n) {
+                int sumDivisorsSummI = getSumDivisor(sumDivisorsI);
+                if (sumDivisorsSummI == i) {
+                    return sumDivisorsI;
+                }
+            }
+        }
         return 0;
+    }
+
+
+    static int getSumDivisor(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n / 2; i++) {
+            if (n % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
     }
 }
