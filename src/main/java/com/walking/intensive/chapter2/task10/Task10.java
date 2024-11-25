@@ -16,6 +16,11 @@ public class Task10 {
     }
 
     static boolean isPalindrome(String inputString) {
+
+        //если строчка меньше 2х символов или пустая, нет смысла проверять
+        if (inputString.length() < 2 || inputString == "  ") {
+            return false;
+        }
         // удалим из строчки всё, кроме букв
         String clearString = inputString.replaceAll("[^а-яА-Я]", "");
         String palidrome = "";
@@ -24,6 +29,13 @@ public class Task10 {
             palidrome += clearString.charAt(i);
         }
 
-        return palidrome.equalsIgnoreCase(clearString);
+        for (int i = clearString.length() - 1; i >= clearString.length() / 2; i--) {
+            if (clearString.toLowerCase().charAt(i) != clearString.toLowerCase().charAt(clearString.length() - 1 - i)) {
+                return false;
+            }
+        }
+
+        return true;
+        // return palidrome.equalsIgnoreCase(clearString);
     }
 }
