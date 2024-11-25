@@ -57,25 +57,29 @@ public class Task9 {
 
     static String getPascalTriangle(int n) {
         String trianglePascal = "";
-        for(int i = 0; i < n; i++){
+        for (int i = 0; i < n; i++) {
 
             //поставим начальные пробелы
-            for(int space = 0; space < n - i - 1; space++){
+            for (int space = 0; space < n - i - 1; space++) {
                 trianglePascal += " ";
             }
 
             //у нас k - номер в строке, i - номер строки
-            for(int k = 0; k <= i; k++){
-                trianglePascal += getPascalNumber(i, k) + " ";
+            for (int k = 0; k <= i; k++) {
+                if (k < i) {
+                    trianglePascal += getPascalNumber(i, k) + " ";
+                } else {
+                    trianglePascal += getPascalNumber(i, k);
+                }
             }
             trianglePascal += "\n";
         }
         return trianglePascal;
     }
 
-    public static int getPascalNumber(int n, int k){
+    public static int getPascalNumber(int n, int k) {
         //в формуле используется k - номер числа в строке, n - номер строки
-        if(k == n || k == 0){
+        if (k == n || k == 0) {
             return 1;
         }
         return getPascalNumber(n - 1, k - 1) + getPascalNumber(n - 1, k);
