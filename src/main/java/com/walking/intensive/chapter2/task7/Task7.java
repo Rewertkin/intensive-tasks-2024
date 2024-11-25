@@ -28,7 +28,7 @@ package com.walking.intensive.chapter2.task7;
 public class Task7 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        // System.out.println(getFriendlyPair(79));
+        System.out.println(getFriendlyPair(497));
     }
 
     static int getFriendlyPair(int n) {
@@ -36,10 +36,9 @@ public class Task7 {
             return -1;
         }
         for (int i = n; i > 0; i--) {
-            int sumDivisorsI = getSumDivisor(i);
-            if (sumDivisorsI > i && sumDivisorsI < n) {
-                int sumDivisorsSummI = getSumDivisor(sumDivisorsI);
-                if (sumDivisorsSummI == i) {
+            int sumDivisorsI = getSumDivisor(i); //найдем сумму множителей
+            if (sumDivisorsI > i && sumDivisorsI < n) { //число большее из пары и меньше N
+                if (getSumDivisor(sumDivisorsI) == i) { //проверим, является ли число дружественным i
                     return sumDivisorsI;
                 }
             }
