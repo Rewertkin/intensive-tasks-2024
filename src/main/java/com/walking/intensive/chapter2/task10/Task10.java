@@ -12,10 +12,18 @@ package com.walking.intensive.chapter2.task10;
 public class Task10 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
+        System.out.println(isPalindrome("Муза! Ранясь шилом опыта, ты помолишься на разум."));
     }
 
     static boolean isPalindrome(String inputString) {
-        // Ваш код
-        return false;
+        // удалим из строчки всё, кроме букв
+        String clearString = inputString.replaceAll("[^а-яА-Я]", "");
+        String palidrome = "";
+
+        for (int i = clearString.length() - 1; i >= 0; i--) {
+            palidrome += clearString.charAt(i);
+        }
+
+        return palidrome.equalsIgnoreCase(clearString);
     }
 }
