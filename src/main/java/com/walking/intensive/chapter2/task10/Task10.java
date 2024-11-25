@@ -18,7 +18,7 @@ public class Task10 {
     static boolean isPalindrome(String inputString) {
 
         //если строчка меньше 2х символов или пустая, нет смысла проверять
-        if (inputString.length() < 2 || inputString == "  ") {
+        if (inputString.length() < 2 || inputString.equals("  ")) {
             return false;
         }
         // удалим из строчки всё, кроме букв
