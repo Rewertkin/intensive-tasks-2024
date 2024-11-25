@@ -52,7 +52,7 @@ package com.walking.intensive.chapter2.task9;
 public class Task9 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        System.out.println(getPascalTriangle(5));
+        System.out.println(getPascalTriangle(18));
     }
 
     static String getPascalTriangle(int n) {
@@ -64,19 +64,20 @@ public class Task9 {
                 trianglePascal += " ";
             }
 
-            //в формуле используется k - номер числа в строке, n - номер строки
             //у нас k - номер в строке, i - номер строки
             for(int k = 0; k <= i; k++){
-                trianglePascal += getFactorial(i) / ((getFactorial(k) * getFactorial(i - k))) + " ";
+                trianglePascal += getPascalNumber(i, k) + " ";
             }
             trianglePascal += "\n";
         }
         return trianglePascal;
     }
-    public static int getFactorial(int x){
-        if (x == 1 || x == 0){ // 0! = 1
+
+    public static int getPascalNumber(int n, int k){
+        //в формуле используется k - номер числа в строке, n - номер строки
+        if(k == n || k == 0){
             return 1;
         }
-        return x * getFactorial(x - 1);
+        return getPascalNumber(n - 1, k - 1) + getPascalNumber(n - 1, k);
     }
 }
