@@ -29,25 +29,25 @@ public class Task8 {
         int totalHappyTicket = 0;
 
         for (int i = 0; i < totalTickets; i++) {
-            if (checkHappyTicket(i)) {
-                totalHappyTicket += 1;
+            if (isHappyTicket(i)) {
+                totalHappyTicket++;
             }
         }
 
-        return (double) totalHappyTicket / (double) totalTickets;
+        return (double) totalHappyTicket / totalTickets;
     }
 
-    static boolean checkHappyTicket(int n) {
+    static boolean isHappyTicket(int n) {
         int sumRightNum = 0;
         int sumLeftNum = 0;
 
         for (int i = 0; i < 6; i++) {
-            int number = n % 10;
+            int currentNumber = n % 10;
             n = n / 10;
             if (i < 3) {
-                sumRightNum += number;
+                sumRightNum += currentNumber;
             } else {
-                sumLeftNum += number;
+                sumLeftNum += currentNumber;
             }
         }
 
