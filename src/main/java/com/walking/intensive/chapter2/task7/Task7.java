@@ -36,9 +36,9 @@ public class Task7 {
             return -1;
         }
         for (int i = n; i > 0; i--) {
-            int sumDivisorsI = getSumDivisor(i); //найдем сумму множителей
-            if (sumDivisorsI > i && sumDivisorsI < n) { //число большее из пары и меньше N
-                if (getSumDivisor(sumDivisorsI) == i) { //проверим, является ли число дружественным i
+            int sumDivisorsI = getDivisorSum(i);
+            if (sumDivisorsI > i && sumDivisorsI < n) {
+                if (getDivisorSum(sumDivisorsI) == i) {
                     return sumDivisorsI;
                 }
             }
@@ -47,11 +47,14 @@ public class Task7 {
     }
 
 
-    static int getSumDivisor(int n) {
+    static int getDivisorSum(int n) {
         int sum = 0;
-        for (int i = 1; i <= n / 2; i++) {
+        for (int i = 1; i <= Math.sqrt(n); i++) {
             if (n % i == 0) {
                 sum += i;
+                if (i != n / i && n != n / i) {
+                    sum += n / i;
+                }
             }
         }
         return sum;
