@@ -57,22 +57,30 @@ public class Task9 {
 
     static String getPascalTriangle(int n) {
         String trianglePascal = "";
-        for (int i = 0; i < n; i++) {
-
-            //поставим начальные пробелы
-            for (int space = 0; space < n - i - 1; space++) {
-                trianglePascal += " ";
-            }
+        int widthLastLine = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            String currentLine = "";
 
             //у нас k - номер в строке, i - номер строки
             for (int k = 0; k <= i; k++) {
                 if (k < i) {
-                    trianglePascal += getPascalNumber(i, k) + " ";
+                    currentLine += getPascalNumber(i, k) + " ";
                 } else {
-                    trianglePascal += getPascalNumber(i, k);
+                    currentLine += getPascalNumber(i, k);
                 }
             }
-            trianglePascal += "\n";
+
+            //посчитаем кол-во пробелов - длину основания
+            if (i == n - 1) {
+                widthLastLine = currentLine.length();
+                if (widthLastLine % 2 != 0) {
+                    currentLine = " " + currentLine;
+                    widthLastLine++;
+                }
+            }
+
+            trianglePascal = " ".repeat((widthLastLine - currentLine.length()) / 2)
+                    + currentLine + "\n" + trianglePascal;
         }
         return trianglePascal;
     }
