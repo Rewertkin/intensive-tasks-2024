@@ -27,8 +27,6 @@ public class Task10 {
             return false;
         }
 
-        String palidrome = "";
-
         for (int i = clearString.length() - 1; i >= clearString.length() / 2; i--) {
             if (clearString.charAt(i) != clearString.charAt(clearString.length() - 1 - i)) {
                 return false;
