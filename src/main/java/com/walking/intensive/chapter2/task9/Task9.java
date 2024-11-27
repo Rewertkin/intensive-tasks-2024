@@ -63,20 +63,15 @@ public class Task9 {
 
             //у нас k - номер в строке, i - номер строки
             for (int k = 0; k <= i; k++) {
+                currentLine += getPascalNumber(i, k);
                 if (k < i) {
-                    currentLine += getPascalNumber(i, k) + " ";
-                } else {
-                    currentLine += getPascalNumber(i, k);
+                    currentLine += " ";
                 }
             }
 
             //посчитаем кол-во пробелов - длину основания
             if (i == n - 1) {
                 widthLastLine = currentLine.length();
-                if (widthLastLine % 2 != 0) {
-                    currentLine = " " + currentLine;
-                    widthLastLine++;
-                }
             }
 
             trianglePascal = " ".repeat((widthLastLine - currentLine.length()) / 2)
