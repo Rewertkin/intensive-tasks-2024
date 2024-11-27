@@ -12,30 +12,29 @@ package com.walking.intensive.chapter2.task10;
 public class Task10 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
-        System.out.println(isPalindrome("Муза! Ранясь шилом опыта, ты помолишься на разум."));
+        System.out.println(isPalindrome("        "));
     }
 
     static boolean isPalindrome(String inputString) {
 
-        //если строчка меньше 2х символов или пустая, нет смысла проверять
-        if (inputString.length() < 2 || inputString.equals("  ")) {
+        if (inputString == null) {
             return false;
         }
-        // удалим из строчки всё, кроме букв
-        String clearString = inputString.replaceAll("[^а-яА-Я]", "");
-        String palidrome = "";
 
-        for (int i = clearString.length() - 1; i >= 0; i--) {
-            palidrome += clearString.charAt(i);
+        String clearString = inputString.replaceAll("[^а-яА-Я]", "").toLowerCase();
+
+        if (clearString.length() < 2) {
+            return false;
         }
 
+        String palidrome = "";
+
         for (int i = clearString.length() - 1; i >= clearString.length() / 2; i--) {
-            if (clearString.toLowerCase().charAt(i) != clearString.toLowerCase().charAt(clearString.length() - 1 - i)) {
+            if (clearString.charAt(i) != clearString.charAt(clearString.length() - 1 - i)) {
                 return false;
             }
         }
 
         return true;
-        // return palidrome.equalsIgnoreCase(clearString);
     }
 }
