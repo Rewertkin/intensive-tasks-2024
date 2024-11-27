@@ -36,16 +36,15 @@ public class Task7 {
             return -1;
         }
         for (int i = n; i > 0; i--) {
-            int sumDivisorsI = getDivisorSum(i);
-            if (sumDivisorsI > i && sumDivisorsI < n) {
-                if (getDivisorSum(sumDivisorsI) == i) {
-                    return sumDivisorsI;
+            int sumDivisors = getDivisorSum(i);
+            if (sumDivisors > i && sumDivisors < n) {
+                if (getDivisorSum(sumDivisors) == i) {
+                    return sumDivisors;
                 }
             }
         }
         return 0;
     }
-
 
     static int getDivisorSum(int n) {
         int sum = 0;
