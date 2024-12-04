@@ -1,6 +1,5 @@
 package com.walking.intensive.chapter3.task12;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
