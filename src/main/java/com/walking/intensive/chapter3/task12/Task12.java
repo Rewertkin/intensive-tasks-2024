@@ -77,7 +77,7 @@ public class Task12 {
     static int[] convertString2Array(String line) {
         int[] array = new int[line.length()];
         for (int i = 0; i < line.length(); i++) {
-            if (Character.isDigit(line.charAt(i))) {
+            if (Character.isDigit(line.charAt(i)) && Character.digit(line.charAt(i), 10) <= 1) {
                 array[i] = Character.digit(line.charAt(i), 10);
             } else {
                 return new int[]{};
