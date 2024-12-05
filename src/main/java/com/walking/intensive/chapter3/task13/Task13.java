@@ -50,10 +50,45 @@ package com.walking.intensive.chapter3.task13;
 public class Task13 {
     public static void main(String[] args) {
 //        Для собственных проверок можете делать любые изменения в этом методе
+        int[] plants = {1, 1, 1, 4, 2, 3};
+        System.out.println(getStepsCount(plants, 4));
     }
 
     static int getStepsCount(int[] plants, int wateringCanVolume) {
-        // Ваш код
-        return 0;
+
+        if (plants.length == 0) {
+            return 0;
+        }
+
+        if (wateringCanVolume < 1) {
+            return -1;
+        }
+
+        for (int i : plants) {
+            if (i < 1) {
+                return -1;
+            }
+        }
+
+        int steps = 0;
+        int currentWaterCanVolume = wateringCanVolume;
+        int waterPlace = -1;
+        int currentPlace = waterPlace;
+        for (int currentPlant = 0; currentPlant < plants.length; currentPlant++) {
+            int needWaterCurrentPlant = plants[currentPlant];
+            while (needWaterCurrentPlant > 0) {
+                if (currentWaterCanVolume >= needWaterCurrentPlant) {
+                    steps += Math.abs(currentPlant - currentPlace);
+                    currentPlace = currentPlant;
+                    needWaterCurrentPlant -= currentWaterCanVolume;
+                    currentWaterCanVolume = Math.abs(needWaterCurrentPlant);
+                } else {
+                    steps += Math.abs(waterPlace - currentPlace);
+                    currentPlace = waterPlace;
+                    currentWaterCanVolume = wateringCanVolume;
+                }
+            }
+        }
+        return steps;
     }
 }
