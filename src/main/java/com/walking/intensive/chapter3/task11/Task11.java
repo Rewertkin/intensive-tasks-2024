@@ -53,8 +53,8 @@ public class Task11 {
             return 0;
         }
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < 0) {
+        for (int i : array) {
+            if (i < 0) {
                 return -1;
             }
         }
