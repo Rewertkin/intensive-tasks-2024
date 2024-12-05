@@ -53,15 +53,17 @@ public class Task11 {
             return 0;
         }
 
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 0) {
+                return -1;
+            }
+        }
+
         int sum = 0;
         for (int firstNum = 0; firstNum < array.length; firstNum++) {
             for (int secondNum = firstNum; secondNum < array.length; secondNum += 2) {
                 for (int i = firstNum; i <= secondNum; i++) {
-                    if (array[i] >= 0) {
-                        sum += array[i];
-                    } else {
-                        return -1;
-                    }
+                    sum += array[i];
                 }
             }
         }
