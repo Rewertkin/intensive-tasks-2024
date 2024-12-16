@@ -363,16 +363,16 @@ public class Task16 {
 
         int[] arrResult = new int[arr.length - countDeleteNum];
         int count = 0;
-        for (int i = 0; i < arr.length; i++) {
+        for (int i : arr) {
             boolean notDelNum = true;
             for (int j : removingValues) {
-                if (arr[i] == j) {
+                if (i == j) {
                     notDelNum = false;
                     break;
                 }
             }
             if (notDelNum) {
-                arrResult[count] = arr[i];
+                arrResult[count] = i;
                 count++;
             }
         }
