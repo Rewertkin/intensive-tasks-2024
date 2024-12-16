@@ -345,6 +345,7 @@ public class Task16 {
             for (int x : removingValues) {
                 if (x == j) {
                     deleteNum = true;
+                    break;
                 }
             }
             if (deleteNum) {
@@ -367,6 +368,7 @@ public class Task16 {
             for (int j : removingValues) {
                 if (arr[i] == j) {
                     notDelNum = false;
+                    break;
                 }
             }
             if (notDelNum) {
@@ -424,6 +426,7 @@ public class Task16 {
             for (int j : arr2) {
                 if (x == j) {
                     similarNum = true;
+                    break;
                 }
             }
             if (!similarNum) {
