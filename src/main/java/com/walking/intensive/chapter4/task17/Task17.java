@@ -1,7 +1,5 @@
 package com.walking.intensive.chapter4.task17;
 
-import java.util.Arrays;
-
 /**
  * Смауг, живущий в пещере с золотом, был заперт внутри горы.
  * Чтобы занять свое время, он развлекал себя следующей игрой.
@@ -51,7 +49,7 @@ public class Task17 {
             return new int[]{};
         }
 
-        boolean changed = false;
+        boolean changed;
 
         do {
             changed = false;
